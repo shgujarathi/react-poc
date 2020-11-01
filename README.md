@@ -1,70 +1,92 @@
-# Getting Started with Create React App
+React Imp Points
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React Components can be declared as function or class (This project have example TimeTick.JS)
 
-## Available Scripts
+Functions components can be written/modified as class components
 
-In the project directory, you can run:
+Instance(Component) Properties
+  State
+  Props 
 
-### `npm start`
+super(props) - should be first line in constructor of component and mandatory
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+When state or props of component updated/changed react will invoke render function.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Props(properties) are Read-Only - Whether you declare a component as a function or a class, it must never modify its own props.Such functions are called “pure” because they do not attempt to change their inputs, and always return the same result for the same inputs
 
-### `npm test`
+If we are writing a component which alters or modifies props they are called impure 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Never modify state(of component) directy.
 
-### `npm run build`
+Flow in components
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Mounting
+  constructor()
+  static getDerivedStateFromProps()
+  render()
+  componentDidMount() - Life cycle method
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Updating
+  static getDerivedStateFromProps()
+  shouldComponentUpdate()
+  render()
+  getSnapshotBeforeUpdate()
+  componentDidUpdate() - Life cycle method
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Unmounting
+  componentWillUnmount()
+  
+Error handling
+  static getDerivedStateFromError()
+  componentDidCatch()
 
-### `npm run eject`
+Class Properties
+  defaultProps
+  displayName
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Each component also provides some other APIs:
+  setState()
+  forceUpdate()
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+There are three things you should know about setState().
+  1.Do Not Modify State Directly
+    Wrong - this.state.comment = 'Hello';
+    Correct - this.setState({comment: 'Hello'});
+    
+  2.State Updates May Be Asynchronous
+    Wrong -
+    this.setState({
+      counter: this.state.counter + this.props.increment,
+    });
+    correct - 
+    this.setState((state, props) => ({
+      counter: state.counter + props.increment
+    }));
+    
+  3.State Updates are Merged
+  For example, your state may contain several independent variables:
+  this.state = {
+      posts: [],
+      comments: []
+  };
+  Then you can update them independently with separate setState() calls:
+  componentDidMount() {
+    fetchPosts().then(response => {
+      this.setState({
+        posts: response.posts
+      });
+    });
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    fetchComments().then(response => {
+      this.setState({
+        comments: response.comments
+      });
+    });
+  }
+  The merging is shallow, so this.setState({comments}) leaves this.state.posts intact, but completely replaces this.state.comments.
+  
+Neither parent nor child components can know if a certain component is stateful or stateless, and they shouldn’t care whether it is defined as a function or a class. 
+This is why state is often called local or encapsulated. It is not accessible to any component other than the one that owns and sets it.
+A component may choose to pass its state down as props to its child components:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
