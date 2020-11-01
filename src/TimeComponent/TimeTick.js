@@ -31,7 +31,8 @@ class TimeTick extends Component {
     }
 
     tick() {
-        this.setState({date: new Date()})
+        // this.state.date = new Date() -> THIS IS WRONG BY DOING THIS IT WILL NOT RE RENDER THE PAGE
+        this.setState({date: new Date()}) // THIS IS CORRECT ALWAYS USE THIS.SETSTATE
     }
 
     render() {
