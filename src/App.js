@@ -1,7 +1,4 @@
 import {Link} from 'react-router-dom';
-import Game from "./TicTacComponent/Game";
-import TimeTick from "./TimeComponent/TimeTick";
-import AgGrid from './AgGridComponent/AgGrid'
 
 
 const App = () => {
