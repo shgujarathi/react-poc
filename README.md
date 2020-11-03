@@ -141,5 +141,10 @@ class LoggingButton extends React.Component {
 }
 The problem with this syntax is that a different callback is created each time the LoggingButton renders. In most cases, this is fine. However, if this callback is passed as a prop to lower components, those components might do an extra re-rendering. We generally recommend binding in the constructor or using the class fields syntax, to avoid this sort of performance problem.
 
+A good rule of thumb is that elements inside the map() call need keys.
+Keys Must Only Be Unique Among Siblings
+
+React component that renders a form also controls what happens in that form on subsequent user input. An input form element whose value is controlled by React in this way is called a “controlled component”.
+
 
 
