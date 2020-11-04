@@ -1,5 +1,10 @@
 React Imp Points
 
+npx create-react-app my-app
+npm install
+npm start
+npm install --save package-name
+
 React Components can be declared as function or class (This project have example TimeTick.JS)
 
 Functions components can be written/modified as class components
