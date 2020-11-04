@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {AgGridReact} from 'ag-grid-react';
 
-
+import 'ag-grid-enterprise'
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
@@ -12,7 +12,6 @@ class AgGrid extends Component {
 
         this.state = {
             columnDefs: [
-                {headerName: "SELECT", checkboxSelection: true},
                 {headerName: "Template Name", field: "templateName", sortable: true, filter: true},
                 {headerName: "Test Protocol", field: "testProtocol", sortable: true, filter: true},
                 {headerName: "Testing Status", field: "testingStatus", sortable: true, filter: true},
@@ -43,9 +42,9 @@ class AgGrid extends Component {
 
     render() {
         return (
-            <div className="ag-theme-alpine" style={{height: 600, width: 1200}}>
+            <div className="ag-theme-alpine" style={{height: 600, width: 1400}}>
                 <AgGridReact columnDefs={this.state.columnDefs} rowData={this.state.rowData}
-                             rowSelection="multiple" animateRows pagination={true}
+                             rowSelection="multiple" animateRows pagination={true} paginationAutoPageSize={true}
                 ></AgGridReact>
             </div>
         );

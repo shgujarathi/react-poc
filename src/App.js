@@ -1,13 +1,13 @@
 import {Link} from 'react-router-dom';
+import './App.css'
 
 
 const App = () => {
     return (
         <div>
-            <h5>Routes - SPA</h5>
-            <ul>
-                <li><Link to="/game">Game</Link></li>
-                <li><Link to="/time">Time</Link></li>
+            <ul >
+                <li><Link to="/game">Basic React Game</Link></li>
+                <li><Link to="/time">Set Interval Demo</Link></li>
                 <li><Link to="/aggrid">Ag Grid</Link></li>
             </ul>
             <hr/>
