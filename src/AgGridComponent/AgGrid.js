@@ -47,7 +47,6 @@ class AgGrid extends Component {
         const selectedNodes = this.gridApi.getSelectedNodes()
         const selectedData = selectedNodes.map(node => node.data)
         selectedData.map(d => console.log(d))
-        alert(selectedData.map(d => d.templateName + ' ' + d.testProtocol + ' ' + d.productCategory))
         /*const selectedDataStringPresentation = selectedData.map( node => node.templateName + ' ' + node.model).join(', ')
         alert(`Selected nodes: ${selectedDataStringPresentation}`)*/
     };
