@@ -14,7 +14,6 @@ class AgGrid extends Component {
             columnDefs: [
                 {headerName: "Select", checkboxSelection: true},
                 {headerName: "Name", field: "name", sortable: true, filter: true},
-                {headerName: "Protocol", field: "protocol", sortable: true, filter: true},
                 {headerName: "Status", field: "active", sortable: true, filter: true}
             ],
             rowData: []
@@ -30,7 +29,7 @@ class AgGrid extends Component {
     onGridReady = (params) => {
         this.gridApi = params.api;
 
-        fetch("http://localhost:8080/color-templates/all")
+        fetch("http://localhost:8080/templates/all")
             .then(res => res.json())
             .then(
                 (result) => {
