@@ -13,11 +13,8 @@ class AgGrid extends Component {
         this.state = {
             columnDefs: [
                 {headerName: "Select", checkboxSelection: true},
-                {headerName: "Template Name", field: "templateName", sortable: true, filter: true},
-                {headerName: "Test Protocol", field: "testProtocol", sortable: true, filter: true},
-                {headerName: "Testing Status", field: "testingStatus", sortable: true, filter: true},
-                {headerName: "Product Stage", field: "productStage", sortable: true, filter: true},
-                {headerName: "Product Category", field: "productCategory", sortable: true, filter: true},
+                {headerName: "Name", field: "name", sortable: true, filter: true},
+                {headerName: "Protocol", field: "protocol", sortable: true, filter: true},
                 {headerName: "Status", field: "active", sortable: true, filter: true}
             ],
             rowData: []
